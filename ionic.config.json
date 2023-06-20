@@ -1,0 +1,7 @@
+{
+  "name": "doggen",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
