@@ -3,7 +3,9 @@
   height: auto;
   margin-bottom: 20px;
   display: block;
-  margin: 0 auto;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .button {
@@ -12,6 +14,21 @@
   margin-right: auto;
 }
 .welcome-message {
-  font-size: 18px;
-  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 40px;
+}
+ion-content {
+  --background: #f5f5f5;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #555555;
+  margin-bottom: 40px;
+}
+
+.button {
+  margin-top: 20px;
+  --border-radius: 8px;
 }
