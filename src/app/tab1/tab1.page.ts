@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-tab1',
@@ -9,10 +10,17 @@ export class Tab1Page {
   imagensCachorro = ['assets/dog.jpg', 'assets/dog2.jpg'];
   imagemCachorro = this.imagensCachorro[0];
 
+  constructor(private http: HttpClient) { }
+
   gerarDog() {
-    console.log("novo doguinho gerado")
-    const indiceAtual = this.imagensCachorro.indexOf(this.imagemCachorro);
-    const proximoIndice = (indiceAtual + 1) % this.imagensCachorro.length;
-    this.imagemCachorro = this.imagensCachorro[proximoIndice];
+    this.http.get('https://dog.ceo/api/breeds/image/random').subscribe(
+      (response: any) => {
+        this.imagemCachorro = response.message;
+        console.log("Novo doguinho gerado:", this.imagemCachorro);
+      },
+      (error) => {
+        console.log('Erro ao consumir a API Dog API:', error);
+      }
+    );
   }
 }
