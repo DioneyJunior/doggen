@@ -1,13 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Tab 2 </ion-title>
+    <ion-title>doggen</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="ion-text-center">
+    <h1 class="welcome-message">Gerador por raça</h1>
+    <p class="subtitle">
+      Aqui você pode gerar um cachorro de sua raça preferida!
+    </p>
+    <ion-item>
+      <ion-label>Selecione a raça:</ion-label>
+      <ion-select [(ngModel)]="selectedBreed">
+        <ion-select-option *ngFor="let breed of breeds" [value]="breed">
+          {{ breed }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-img
+      [src]="selectedBreedImage"
+      alt="Imagem do cachorro"
+      class="dog-image"
+    ></ion-img>
+    <br />
+    <ion-button expand="full" class="button" (click)="gerarDog()"
+      >Gerar dog</ion-button
+    >
+  </div>
 </ion-content>
