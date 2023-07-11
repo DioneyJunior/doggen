@@ -7,18 +7,28 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page {
-  imagensCachorro = ['assets/dog.jpg', 'assets/dog2.jpg'];
-  imagemCachorro = this.imagensCachorro[0];
+  imagemCachorro!: string;
+  loading = true;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.gerarDog();
+  }
 
   gerarDog() {
+    this.loading = true;
+
     this.http.get('https://dog.ceo/api/breeds/image/random').subscribe(
       (response: any) => {
         this.imagemCachorro = response.message;
-        console.log("Novo doguinho gerado:", this.imagemCachorro);
+        this.loading = false;
+
+        console.log('Novo doguinho gerado:', this.imagemCachorro);
       },
       (error) => {
+        this.loading = false;
+
         console.log('Erro ao consumir a API Dog API:', error);
       }
     );

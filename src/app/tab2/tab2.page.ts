@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-tab2',
@@ -11,41 +12,47 @@ export class Tab2Page {
   selectedBreedImage: string = '';
   breeds: string[] = [];
 
-  constructor(private http: HttpClient) {
-    this.fetchBreeds();
+  loading = true;
+
+  constructor(private http: HttpClient) {}
+
+  async ngOnInit() {
+    await this.fetchBreeds();
+
+    if (this.breeds.length > 0) {
+      this.selectedBreed =
+        this.breeds[this.getRandomArbitrary(0, this.breeds.length)];
+      this.fetchBreedImage();
+    }
   }
 
-  fetchBreeds() {
+  async fetchBreeds() {
     const apiUrl = 'https://dog.ceo/api/breeds/list/all';
-    this.http.get(apiUrl).subscribe(
-      (response: any) => {
-        this.breeds = Object.keys(response.message);
-        console.log('Raças disponíveis:', this.breeds);
-        if (this.breeds.length > 0) {
-          this.selectedBreed = this.breeds[0];
-          this.fetchBreedImage();
-        }
-      },
-      (error) => {
-        console.log('Erro ao obter as raças:', error);
-      }
-    );
+
+    const response = await firstValueFrom(this.http.get<any>(apiUrl));
+
+    this.breeds = Object.keys(response.message);
+    console.log('Raças disponíveis:', this.breeds);
   }
 
   fetchBreedImage() {
+    this.loading = true;
+
     const apiUrl = `https://dog.ceo/api/breed/${this.selectedBreed}/images/random`;
     this.http.get(apiUrl).subscribe(
       (response: any) => {
         this.selectedBreedImage = response.message;
+        this.loading = false;
         console.log('Imagem do cachorro:', this.selectedBreedImage);
       },
       (error) => {
+        this.loading = false;
         console.log('Erro ao obter a imagem do cachorro:', error);
       }
     );
   }
 
-  gerarDog() {
-    this.fetchBreedImage();
+  getRandomArbitrary(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min) + min);
   }
 }

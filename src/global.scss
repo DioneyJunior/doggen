@@ -16,7 +16,7 @@
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
-@import '@ionic/angular/css/display.css';
+@import "@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "@ionic/angular/css/padding.css";
@@ -24,3 +24,25 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+ion-button::part(native) {
+  border-radius: 2000px;
+}
+
+.dog-image-container {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-height: 280px;
+    border-radius: 14px;
+  }
+
+  ion-spinner {
+    width: 56px;
+    height: 56px;
+    font-size: 4rem;
+  }
+}

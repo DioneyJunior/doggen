@@ -7,15 +7,13 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <div class="ion-text-center">
     <h1 class="welcome-message">Bem-vindo ao doggen!</h1>
-    <p class="subtitle">
-      Clique no botão abaixo para gerar uma nova imagem de cachorro!
-    </p>
-    <ion-img
-      [src]="imagemCachorro"
-      alt="Imagem do cachorro"
-      class="dog-image"
-    ></ion-img>
-    <br />
+    <p>Clique no botão abaixo para gerar uma nova imagem de cachorro!</p>
+
+    <div class="dog-image-container ion-margin-vertical">
+      <img *ngIf="!loading" [src]="imagemCachorro" alt="Imagem do cachorro" />
+      <ion-spinner *ngIf="loading"></ion-spinner>
+    </div>
+
     <ion-button expand="full" class="button" (click)="gerarDog()"
       >Gerar dog</ion-button
     >
