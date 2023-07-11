@@ -1,13 +1,19 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Tab 3 </ion-title>
+    <ion-title>doggen</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="ion-text-center">
+    <h1 class="welcome-message">Histórico de Dogs</h1>
+    <div class="dog-history">
+      <div
+        class="dog-item"
+        *ngFor="let dog of dogHistoryService.getDogHistory()"
+      >
+        <ion-img [src]="dog" alt="Imagem do cachorro"></ion-img>
+      </div>
+    </div>
+  </div>
 </ion-content>
