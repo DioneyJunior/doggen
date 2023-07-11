@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
+import { DogHistoryService } from '../dog-history.service';
 
 @Component({
   selector: 'app-tab2',
@@ -14,7 +15,10 @@ export class Tab2Page {
 
   loading = true;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private dogHistoryService: DogHistoryService
+  ) {}
 
   async ngOnInit() {
     await this.fetchBreeds();
@@ -44,6 +48,7 @@ export class Tab2Page {
         this.selectedBreedImage = response.message;
         this.loading = false;
         console.log('Imagem do cachorro:', this.selectedBreedImage);
+        this.dogHistoryService.addDogToHistory(this.selectedBreedImage);
       },
       (error) => {
         this.loading = false;
