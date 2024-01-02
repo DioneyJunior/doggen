@@ -1,14 +1,12 @@
 # Doggen
 
-Doggen é uma aplicação móvel divertida que permite aos usuários gerar fotos aleatórias de cachorros. Você também pode escolher uma raça específica para gerar fotos e acessar o histórico das últimas imagens geradas. Esta aplicação foi desenvolvida utilizando o framework Ionic Angular e integra a DogAPI para obter imagens de cachorros aleatórias.
+Doggen é uma aplicação móvel que permite gerar fotos aleatórias de cachorros. Você também pode escolher uma raça específica para gerar fotos e acessar o histórico das últimas imagens geradas. Esta aplicação foi desenvolvida utilizando o framework Ionic Angular e integra a DogAPI para obter imagens de cachorros aleatórias.
 
 ## Funcionalidades
 
-- Gere fotos aleatórias de cachorros com apenas um toque.
-- Escolha uma raça específica para ver fotos da raça desejada.
+- Gerar fotos aleatórias de cachorros.
+- Escolher uma raça específica para gerar fotos da raça desejada.
 - Acesse o histórico das últimas fotos geradas.
-- Interface de usuário amigável e intuitiva.
-- Atualizações frequentes com novas raças e recursos.
 
 ## Capturas de Tela
 
